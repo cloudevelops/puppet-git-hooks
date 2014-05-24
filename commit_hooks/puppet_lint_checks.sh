@@ -8,7 +8,7 @@ error_msg=$(mktemp /tmp/error_msg_puppet-lint.XXXXX)
 
 # De-lint puppet manifests
 echo -e "\e[0;36mChecking puppet style guide compliance for $1...\e[0m"
-puppet-lint --fail-on-warnings --with-filename --no-80chars-check $1 2>&1 > $error_msg
+puppet-lint --no-class_parameter_defaults-check --with-filename --no-80chars-check $1 2>&1 > $error_msg
 RC=$?
 if [ $RC -ne 0 ]; then
     echo -en "\e[0;31m"
